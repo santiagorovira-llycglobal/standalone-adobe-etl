@@ -1,0 +1,7 @@
+aanalytics2
+pandas
+google-cloud-bigquery
+pyarrow
+db-dtypes
+python-dotenv
+requests
