@@ -21,9 +21,14 @@ def run_etl(config: Dict[str, Any]):
     Executes the Adobe to BigQuery ETL process.
     """
     # 1. Adobe Credentials & Connection
-    adobe_creds = config.get("adobe_credentials")
-    if not adobe_creds:
-        raise ValueError("Missing 'adobe_credentials' in config.")
+    adobe_creds = {
+        "client_id": os.getenv("ADOBE_CLIENT_ID"),
+        "client_secret": os.getenv("ADOBE_CLIENT_SECRET"),
+        "org_id": os.getenv("ADOBE_ORG_ID")
+    }
+    
+    if not all(adobe_creds.values()):
+        raise ValueError("Missing Adobe credentials in environment variables. Ensure ADOBE_CLIENT_ID, ADOBE_CLIENT_SECRET, and ADOBE_ORG_ID are set in your .env file.")
     
     logger.info("Initializing Adobe Analytics Connector...")
     connector = AdobeAnalyticsConnector(adobe_creds)

@@ -1,0 +1,20 @@
+{
+  "report_config": {
+    "rsid": "your_report_suite_id",
+    "dimension": "variables/evar1",
+    "metrics": [
+      "metrics/visits",
+      "metrics/pageviews"
+    ],
+    "date_range": {
+      "start_date": "2023-01-01",
+      "end_date": "2023-01-31"
+    },
+    "limit": 50000
+  },
+  "bigquery_config": {
+    "dataset_id": "adobe_analytics_reports",
+    "table_id": "test_report_data",
+    "write_disposition": "WRITE_APPEND"
+  }
+}
